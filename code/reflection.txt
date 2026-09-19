@@ -1,6 +1,11 @@
-Write your reflection here.
+I learned a lot while figuring out this assignment. In the earlier stages, I was
+confused about how __init__.py and relative imports worked together to create a
+public API. I also struggled with using a dictionary accumulator and updating
+both the units sold and the revenue for every group.
 
-See reflection.md for what makes a good reflection — be specific, use the
-terminology from this assignment (package, module, ETL, coercion, public API,
-relative import, accumulator, group by, unit vs. integration test), and make it
-actionable.
+I honestly did not think this assignment would take me very long, but organizing
+the Finance, Marketing, and Operations reports was a little difficult for me. I
+did learn how to organize code better, separate an ETL pipeline into different
+modules, and transform and display the data. I need more practice with relative
+imports and dictionary accumulators so I can understand those concepts without
+having to rely as much on examples.

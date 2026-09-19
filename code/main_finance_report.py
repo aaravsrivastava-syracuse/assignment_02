@@ -19,6 +19,13 @@ Before running:  pip install -r requirements.txt
 
 import sys
 
+from sales_pipeline import (
+    calculate_total_revenue,
+    clean_sales_data,
+    get_raw_sales_data,
+    print_sales_table,
+)
+
 # --- Reading the dataset seed ----------------------------------------------------
 #
 # This block is GIVEN to you, in this report only. It is plumbing, not the lesson —
@@ -72,3 +79,14 @@ if len(sys.argv) > 1 and sys.argv[1].strip() != "":
 #
 #          That line is given because the format spec is worth seeing once. You
 #          will need the same trick in the next two reports.
+
+print("=== FINANCE: Daily Sales Detail ===")
+print()
+
+raw_data = get_raw_sales_data(seed)
+clean_data = clean_sales_data(raw_data)
+total_revenue = calculate_total_revenue(clean_data)
+
+print_sales_table(clean_data)
+print()
+print(f"Total Pipeline Revenue: ${total_revenue:,.2f}")

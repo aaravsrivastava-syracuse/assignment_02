@@ -19,6 +19,14 @@ Before running:  pip install -r requirements.txt
 
 import sys
 
+from sales_pipeline import (
+    clean_sales_data,
+    find_top_entry,
+    get_raw_sales_data,
+    print_item_table,
+    summarize_by_item,
+)
+
 # --- The report ------------------------------------------------------------------
 #
 # Less scaffolding this time. The steps are described, but which function does each
@@ -55,3 +63,27 @@ import sys
 #        Top seller by revenue: Gizmo Pro ($1,200.00)
 #        Top seller by units:   Widget C (15 units)
 # TODO
+
+seed = None
+if len(sys.argv) > 1 and sys.argv[1].strip() != "":
+    seed = int(sys.argv[1])
+
+print("=== MARKETING: Revenue by Item ===")
+print()
+
+raw_data = get_raw_sales_data(seed)
+clean_data = clean_sales_data(raw_data)
+item_summary = summarize_by_item(clean_data)
+top_by_revenue = find_top_entry(item_summary, "revenue")
+top_by_units = find_top_entry(item_summary, "units_sold")
+
+print_item_table(item_summary)
+print()
+print(
+    f"Top seller by revenue: {top_by_revenue['item']} "
+    f"(${top_by_revenue['revenue']:,.2f})"
+)
+print(
+    f"Top seller by units:   {top_by_units['item']} "
+    f"({top_by_units['units_sold']} units)"
+)
