@@ -53,7 +53,7 @@ from sales_pipeline import (
 
 
 seed = None
-if len(sys.argv) > 1:
+if len(sys.argv) > 1 and sys.argv[1].strip() != "":
     seed = int(sys.argv[1])
 
 print("=== OPERATIONS: Sales by Day ===")
